@@ -110,7 +110,7 @@
 
         <div class="mb-12">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+            <input type="text" class="form-control" id="name" name="name" value="{{ old('name')}}" placeholder="Name">
             @error('name')
                 <p class="text-red">{{ $message }}</p>
             @enderror
@@ -118,7 +118,7 @@
 
         <div class="mb-12">
             <label for="phone" class="form-text">Phone</label>
-            <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone">
+            <input type="text" name="phone" class="form-control" id="phone" value="{{ old('phone') }}" placeholder="Phone">
             @error('phone')
                 <p class="text-red">{{ $message }}</p>
             @enderror
@@ -127,6 +127,9 @@
         <div class="mb-12">
             <label for="image" class="form-text">Image</label>
             <input type="file" name="image" class="form-control" id="image">
+            @error('image')
+            <p class="text-red">{{ $message }}</p>
+        @enderror
         </div>
 
         <button type="submit">Submit</button>

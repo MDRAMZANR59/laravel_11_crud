@@ -167,9 +167,14 @@
         a:focus {
             outline: none;
         }
+
     </style>
 </head>
 <body>
+    <div style="text-align:left; margin-bottom:20px">
+        <a href="{{ route('form') }}">Go</a>
+    </div>
+
 
     @if (session('success'))
         <div class="message success">
@@ -214,8 +219,6 @@
         </tbody>
     </table>
 
-
-    <a href="{{ route('form') }}">Go</a>
 
 </body>
 </html>

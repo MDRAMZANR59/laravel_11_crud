@@ -127,6 +127,9 @@
         <div class="mb-12">
             <label for="image" class="form-text">Image</label>
             <input type="file" name="image" class="form-control" id="image" placeholder="" value="{{ $olddatas->image }}">
+            @error('image')
+            <p class="text-red">{{ $message }}</p>
+        @enderror
         </div>
 
         <button type="submit">Update</button>

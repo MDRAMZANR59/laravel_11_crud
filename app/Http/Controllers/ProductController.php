@@ -15,9 +15,9 @@ class ProductController extends Controller
     public function store(Request $request){
         $validate=$request->validate([
             'name'=>'required',
-                // Validated
+                // Validated phone and image for nullabale
             'phone' => ['required', 'regex:/^\d+$/'],
-            'image'=>'mimes:png,jpg'
+            'image'=>'nullable|image|mimes:jpeg,jpg,png,gif|max:2048'
         ]);
         $imagename=null;
        if($request->image){
@@ -43,13 +43,14 @@ class ProductController extends Controller
     public function update($id, Request $request){
         $validate=$request->validate([
             'name'=>'required',
-            'phone' =>preg_replace('/\D/', '', $request->input('phone')),
-            'image'=>'mimes:png,jpg'
+              // Validated phone and image for nullabale
+            'phone' => ['required', 'regex:/^\d+$/'],
+            'image'=>'nullable|image|mimes:jpeg,jpg,png,gif|max:2048'
         ]);
         $model=product::findOrFail($id);
         // $model=new product();
         $model->name=$request->name;
-        $model->phone=$request->phone;
+        $model->phone = preg_replace('/\D/', '', $request->input('phone'));
 
         if($request->image){
             $imagename=time().'.'.$request->image->extension();
