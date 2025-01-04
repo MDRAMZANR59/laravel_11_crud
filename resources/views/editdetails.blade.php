@@ -84,6 +84,9 @@
             color: #f44336;
             font-size: 0.9rem;
             margin-top: 5px;
+            text-align: left;
+            margin-bottom: 10px;
+            margin-left: 1px
         }
 
         /* Responsive Design */

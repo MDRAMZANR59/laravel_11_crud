@@ -35,7 +35,7 @@ class ProductController extends Controller
         return view('editdetails',['olddatas'=>$dbdata]);
     }
     public function showlist(){
-        return view('datalist',['datas'=>product::all()]);
+        return view('homepage',['datas'=>product::all()]);
     }
     public function update($id, Request $request){
         $validate=$request->validate([
