@@ -196,7 +196,7 @@
     <table>
         <thead>
             <tr>
-                <th>Sl</th>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Phone</th>
                 <th>Image</th>
