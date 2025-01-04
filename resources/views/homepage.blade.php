@@ -171,10 +171,6 @@
     </style>
 </head>
 <body>
-    <div style="text-align:left; margin-bottom:20px">
-        <a href="{{ route('form') }}">Go</a>
-    </div>
-
 
     @if (session('success'))
         <div class="message success">
@@ -192,13 +188,19 @@
         </div>
     @endif
 
+    <div style="text-align:left; margin-bottom:20px">
+        <a href="{{ route('form') }}">Go</a>
+    </div>
 
+    <div style="text-align:center; margin:20px">
+        <a href="{{ route('allblog') }}" >All Blog</a>
+    </div>
     <table>
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Phone</th>
+                <th>Sl</th>
+                <th>Title</th>
+                <th>Description</th>
                 <th>Image</th>
                 <th>Action</th>
             </tr>
@@ -208,8 +210,8 @@
             <tr>
                 <td>{{ $data->id }}</td>
                 <td>{{ $data->name }}</td>
-                <td>{{ $data->phone }}</td>
-                <td><img src="images/{{ $data->image }}" alt="Image of {{ $data->name }}"></td>
+                <td>{{ $data->description }}</td>
+                <td><img src="images/{{ $data->image }}" alt="Data Not Found"></td>
                 <td>
                     <a href="{{ route('edit', $data->id) }}"><button>Edit</button></a>
                     <a href="{{ route('delete', $data->id) }}"><button>Delete</button></a>

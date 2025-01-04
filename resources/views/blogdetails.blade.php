@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Edit</title>
     <style>
         /* General Reset */
         * {
@@ -103,36 +103,36 @@
 </head>
 <body>
 
-    <h3>Submit Data</h3>
+    <h3>Edit Data: {{ $olddatas->name }}</h3>
 
-    <form action="{{ route('datastore') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('update', $olddatas->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-12">
-            <label for="name" class="form-label">Title</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ old('name')}}" placeholder="Name">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ $olddatas->name }}">
             @error('name')
                 <p class="text-red">{{ $message }}</p>
             @enderror
         </div>
 
         <div class="mb-12">
-            <label for="description" class="form-text">Description</label>
-            <textarea name="description" class="form-control" id="description" value="{{ old('description') }}" placeholder="Description"></textarea>
-            @error('description')
+            <label for="phone" class="form-text">Phone</label>
+            <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone" value="{{ $olddatas->phone }}">
+            @error('phone')
                 <p class="text-red">{{ $message }}</p>
             @enderror
         </div>
 
         <div class="mb-12">
             <label for="image" class="form-text">Image</label>
-            <input type="file" name="image" class="form-control" id="image">
+            <input type="file" name="image" class="form-control" id="image" placeholder="" value="{{ $olddatas->image }}">
             @error('image')
             <p class="text-red">{{ $message }}</p>
         @enderror
         </div>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Update</button>
     </form>
 
 </body>

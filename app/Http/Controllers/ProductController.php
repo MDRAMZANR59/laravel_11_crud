@@ -16,7 +16,7 @@ class ProductController extends Controller
         $validate=$request->validate([
             'name'=>'required',
                 // Validated phone and image for nullabale
-            'phone' => ['required', 'regex:/^\d+$/'],
+            'description' => 'required',
             'image'=>'nullable|image|mimes:jpeg,jpg,png,gif|max:2048'
         ]);
         $imagename=null;
@@ -27,7 +27,7 @@ class ProductController extends Controller
         $model=new product();
         $model->name=$request->name;
          // Validated
-        $model->phone = preg_replace('/\D/', '', $request->input('phone'));
+        $model->description=$request->description;
         $model->image=$imagename;
         $model->save();
 
@@ -44,13 +44,13 @@ class ProductController extends Controller
         $validate=$request->validate([
             'name'=>'required',
               // Validated phone and image for nullabale
-            'phone' => ['required', 'regex:/^\d+$/'],
+            'description' => 'required',
             'image'=>'nullable|image|mimes:jpeg,jpg,png,gif|max:2048'
         ]);
         $model=product::findOrFail($id);
         // $model=new product();
         $model->name=$request->name;
-        $model->phone = preg_replace('/\D/', '', $request->input('phone'));
+        $model->description=$request->description;
 
         if($request->image){
             $imagename=time().'.'.$request->image->extension();
