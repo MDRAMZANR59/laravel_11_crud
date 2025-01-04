@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\product;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,7 +15,8 @@ class ProductController extends Controller
     public function store(Request $request){
         $validate=$request->validate([
             'name'=>'required',
-            'phone'=>'required',
+                // Validated
+            'phone' => ['required', 'regex:/^\d+$/'],
             'image'=>'mimes:png,jpg'
         ]);
         $imagename=null;
@@ -24,7 +26,8 @@ class ProductController extends Controller
        };
         $model=new product();
         $model->name=$request->name;
-        $model->phone=$request->phone;
+         // Validated
+        $model->phone = preg_replace('/\D/', '', $request->input('phone'));
         $model->image=$imagename;
         $model->save();
 
@@ -40,7 +43,7 @@ class ProductController extends Controller
     public function update($id, Request $request){
         $validate=$request->validate([
             'name'=>'required',
-            'phone'=>'required',
+            'phone' =>preg_replace('/\D/', '', $request->input('phone')),
             'image'=>'mimes:png,jpg'
         ]);
         $model=product::findOrFail($id);
